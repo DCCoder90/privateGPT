@@ -8,7 +8,6 @@ from langchain.llms import GPT4All, LlamaCpp
 
 import os
 import argparse
-from check_lang import translate
 
 load_dotenv()
 
@@ -54,7 +53,7 @@ def main():
             break
 
         # Get the answer from the chain
-        res = qa(translate(query))
+        res = qa(query)
         answer, docs = res['result'], [] if args.hide_source else res['source_documents']
 
         # Print the relevant sources used for the answer
