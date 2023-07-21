@@ -64,20 +64,22 @@ class MyElmLoader(UnstructuredEmailLoader):
 # Map file extensions to document loaders and their arguments
 LOADER_MAPPING = {
     ".csv": (CSVLoader, {}),
-    # ".docx": (Docx2txtLoader, {}),
-    ".doc": (UnstructuredWordDocumentLoader, {}),
-    ".docx": (UnstructuredWordDocumentLoader, {}),
     ".enex": (EverNoteLoader, {}),
     ".eml": (MyElmLoader, {}),
     ".epub": (UnstructuredEPubLoader, {}),
     ".html": (UnstructuredHTMLLoader, {}),
     ".md": (UnstructuredMarkdownLoader, {}),
-    ".odt": (UnstructuredODTLoader, {}),
     ".pdf": (PyMuPDFLoader, {}),
-    ".ppt": (UnstructuredPowerPointLoader, {}),
-    ".pptx": (UnstructuredPowerPointLoader, {}),
-    ".txt": (TextLoader, {"encoding": "utf8"}),
-    # Add more mappings for other file extensions and loaders as needed
+    ".txt": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".csproj": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".cs": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".xml": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".yml": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".json": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".cpp": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".h": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".H": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True}),
+    ".hpp": (TextLoader, {"encoding": "utf8", "autodetect_encoding": True})
 }
 
 
@@ -115,6 +117,7 @@ def process_documents(ignored_files: List[str] = []) -> List[Document]:
     Load documents and split in chunks
     """
     print(f"Loading documents from {source_directory}")
+
     documents = load_documents(source_directory, ignored_files)
     if not documents:
         print("No new documents to load")
