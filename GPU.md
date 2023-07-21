@@ -1,3 +1,7 @@
+From [author](https://github.com/imartinez/privateGPT/pull/521#issuecomment-1586093625):
+
+We must set the flag to turn on / of GPU acceleration. With the help of @DanielusG I manage to run it on my Windows PC, didn't test it on Linux and MacOS but I gather some experiences I can list here. Note this worked for llama-cpp-python==0.1.61
+
 # GPU acceleration
 Most importantly the GPU_IS_ENABLED variable must be set to true. Add this to HuggingfaceEmbeddings:
 
